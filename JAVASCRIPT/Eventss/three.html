@@ -13,18 +13,37 @@
 <script>
    const sayPragya = function(str) {
         console.log(str,Date.now());
+        document.body.style.backgroundColor = getRandomColor();
     }
    let intervalId= null
    //clearInterval(intervalId);
+     /*function getRandomColor() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgb(${r}, ${g}, ${b})`;
+        }*/
+
+        function getRandomColor() {
+            const hex ='0123456789ABCDEF';
+            let color='#'
+            for(let i=0;i<6;i++){
+                color+=hex[Math.floor(Math.random()*16)];
+            }
+            
+            return color;
+        }
    document.querySelector('#start').addEventListener('click', function() {
         if(intervalId==null){
          intervalId=   setInterval(sayPragya, 1000,"hii");
+        
             console.log("STARTED");
      }
      })
     document.querySelector('#stop').addEventListener('click', function() {
           clearInterval(intervalId);
           intervalId=null;
+         
           console.log("STOPPED");
      });
      
